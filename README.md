@@ -12,7 +12,19 @@
 ![themes-entities-class-diagram](https://github.com/AlexandraCabreraLituma/APAW-ECP2-AlexandraCabrera/blob/master/AlexandraCabreraUml.png)
 
 ## API
-### POST /trainers
+### POST /users
+#### Parámetros del cuerpo
+- `nie`: String (**requerido**)
+- `firstName`: String (**requerido**)
+- `lastName`: String
+
+#### Respuesta
+- 200 OK
+  - `nie`: String
+- 403 BAD_REQUEST
+
+---
+
 ### POST /teams
 ### POST /players
 ### GET /trainers
