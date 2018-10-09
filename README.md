@@ -9,7 +9,7 @@
 * GitHub
 
 ## Diseño de entidades
-![themes-entities-class-diagram](https://github.com/miw-upm/APAW-themes-layers/blob/master/doc/AlexandraCabreraUml.png)
+![themes-entities-class-diagram](https://github.com/AlexandraCabreraLituma/APAW-ECP2-AlexandraCabrera/doc/AlexandraCabreraUml.png)
 
 ## API
 ### POST /trainers
