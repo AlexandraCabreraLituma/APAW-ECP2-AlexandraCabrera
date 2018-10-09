@@ -19,7 +19,7 @@
 ### PATH/teams
 ### PUT /players/{nie}
 ### DELETE /teams/{id}
-### GET //teams//{id}/average
+### GET /teams/{id}/average
 
 ##### Autor: Alexandra Cabrera
 
