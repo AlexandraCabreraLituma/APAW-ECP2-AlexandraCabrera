@@ -40,6 +40,20 @@
 ---
 
 ### POST /players
+#### Parámetros del cuerpo
+- `nie`: String (**requerido**)
+- `firstName`: String (**requerido**)
+- `lastName`: String
+- `number`: Integer
+- `position`: Position (**requerido**)
+
+#### Respuesta
+- 200 OK
+  - `nie`: String
+- 403 BAD_REQUEST
+
+---
+
 ### GET /trainers
 ### PATH/teams
 ### PUT /players/{nie}
