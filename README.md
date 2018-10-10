@@ -26,6 +26,19 @@
 ---
 
 ### POST /teams
+#### Parámetros del cuerpo
+- `id`: String (**requerido**)
+- `name`: String (**requerido**)
+- `nick`: String
+- `trainerNie`: String (**requerido**)
+
+#### Respuesta
+- 200 OK
+  - `id`: String
+- 403 BAD_REQUEST
+
+---
+
 ### POST /players
 ### GET /trainers
 ### PATH/teams
