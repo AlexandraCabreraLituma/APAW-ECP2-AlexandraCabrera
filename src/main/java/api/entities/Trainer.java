@@ -7,9 +7,10 @@ public class Trainer {
     private String firstName;
     private String lastName;
 
-    public Trainer(String nie, String firstName) {
+    public Trainer(String nie, String firstName,String lastName) {
         this.nie = nie;
         this.firstName = firstName;
+        this.lastName= lastName;
 
     }
     public void setNie(String nie) {

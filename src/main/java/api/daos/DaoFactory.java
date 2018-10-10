@@ -13,5 +13,5 @@ public abstract class DaoFactory {
         DaoFactory.factory = factory;
     }
 
-    public abstract TrainerDao getUserDao();
+    public abstract TrainerDao getTrainerDao();
 }

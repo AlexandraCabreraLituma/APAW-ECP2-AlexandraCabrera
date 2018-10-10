@@ -8,7 +8,7 @@ public class DaoMemoryFactory extends DaoFactory {
     private TrainerDao trainerDao;
 
     @Override
-    public TrainerDao getUserDao() {
+    public TrainerDao getTrainerDao() {
         if (trainerDao == null) {
             trainerDao = new TrainerDaoMemory();
         }

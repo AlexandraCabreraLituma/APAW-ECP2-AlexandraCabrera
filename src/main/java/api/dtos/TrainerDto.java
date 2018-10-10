@@ -7,11 +7,14 @@ public class TrainerDto {
     private String firstName;
     private String lastName;
 
-    public TrainerDto(String nie, String firstName) {
+    public TrainerDto(String nie, String firstName,String lastName) {
         this.nie = nie;
         this.firstName = firstName;
+        this.lastName=lastName;
     }
-
+    public TrainerDto(String nie, String firstName) {
+        this(nie,firstName,null);
+    }
 
     public String getNie() {
         return nie;
