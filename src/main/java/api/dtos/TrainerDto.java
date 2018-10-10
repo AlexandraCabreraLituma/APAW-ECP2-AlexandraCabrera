@@ -3,7 +3,6 @@ package api.dtos;
 public class TrainerDto {
 
     private String nie;
-
     private String firstName;
     private String lastName;
 

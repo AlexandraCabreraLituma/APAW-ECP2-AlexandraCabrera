@@ -7,7 +7,6 @@ import api.exceptions.ArgumentNotValidException;
 public class TrainerApiController {
 
     public static final String TRAINERS = "/trainers";
-
     private TrainerBusinessController trainerBusinessController = new TrainerBusinessController();
 
     public String create(TrainerDto trainerDto) {
