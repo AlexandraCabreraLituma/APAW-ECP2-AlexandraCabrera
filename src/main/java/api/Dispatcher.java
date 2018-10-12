@@ -1,6 +1,9 @@
 package api;
 
+import api.apiControllers.PlayerApiController;
 import api.apiControllers.TrainerApiController;
+import api.daos.PlayerDao;
+import api.dtos.PlayerDto;
 import api.dtos.TrainerDto;
 import api.exceptions.ArgumentNotValidException;
 import api.exceptions.RequestInvalidException;
@@ -11,6 +14,7 @@ import http.HttpStatus;
 public class Dispatcher {
 
     private TrainerApiController trainerApiController = new TrainerApiController();
+    private PlayerApiController playerApiController = new PlayerApiController();
 
     public void submit(HttpRequest request, HttpResponse response) {
         String ERROR_MESSAGE = "{'error':'%S'}";
@@ -33,7 +37,7 @@ public class Dispatcher {
         } catch (ArgumentNotValidException | RequestInvalidException exception) {
             response.setBody(String.format(ERROR_MESSAGE, exception.getMessage()));
             response.setStatus(HttpStatus.BAD_REQUEST);
-        } catch (Exception exception) {  // Unexpected
+        } catch (Exception exception) {
             exception.printStackTrace();
             response.setBody(String.format(ERROR_MESSAGE, exception));
             response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -43,6 +47,9 @@ public class Dispatcher {
     private void doPost(HttpRequest request, HttpResponse response) {
         if (request.isEqualsPath(TrainerApiController.TRAINERS)) {
             response.setBody(this.trainerApiController.create((TrainerDto) request.getBody()));
+        }
+        else if (request.isEqualsPath(PlayerApiController.PLAYERS)) {
+            response.setBody(this.playerApiController.create((PlayerDto) request.getBody()));
         } else {
             throw new RequestInvalidException("method error: " + request.getMethod());
         }
