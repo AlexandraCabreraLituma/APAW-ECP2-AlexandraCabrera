@@ -56,6 +56,11 @@
 ---
 
 ### GET /trainers
+#### Respuesta
+- 200 OK
+  - [{nie:String,name:String}]
+
+---
 ### PATH/teams
 ### PUT /players/{nie}
 ### DELETE /teams/{id}

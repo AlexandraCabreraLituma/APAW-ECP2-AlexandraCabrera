@@ -2,7 +2,9 @@ package api.apiControllers;
 
 import api.businessController.TrainerBusinessController;
 import api.dtos.TrainerDto;
+import api.dtos.TrainerNieFirstNameDto;
 import api.exceptions.ArgumentNotValidException;
+import java.util.List;
 
 public class TrainerApiController {
 
@@ -15,10 +17,13 @@ public class TrainerApiController {
         this.validate(trainerDto.getFirstName(), "trainerDto FirstName");
         return this.trainerBusinessController.create(trainerDto);
     }
-
+    public List<TrainerNieFirstNameDto> readAll() {
+        return trainerBusinessController.readAll();
+    }
     private void validate(Object property, String message) {
         if (property == null) {
             throw new ArgumentNotValidException(message + " is NULL");
         }
     }
+
 }
