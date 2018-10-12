@@ -2,7 +2,6 @@ package api.daos.memory;
 
 import api.daos.TeamDao;
 import api.entities.Team;
-
 import java.util.HashMap;
 
 public class TeamDaoMemory extends GenericDaoMemory<Team> implements TeamDao {

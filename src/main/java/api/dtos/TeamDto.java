@@ -59,6 +59,17 @@ public class TeamDto {
     public void setNick(String nick) {
         this.nick = nick;
     }
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTrainer(String trainer) {
+        this.trainer = trainer;
+    }
 
     @Override
     public String toString() {
@@ -71,15 +82,5 @@ public class TeamDto {
                 '}';
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setTrainer(String trainer) {
-        this.trainer = trainer;
-    }
 }

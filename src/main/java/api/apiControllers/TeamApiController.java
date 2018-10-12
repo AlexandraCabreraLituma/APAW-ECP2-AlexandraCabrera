@@ -1,6 +1,4 @@
 package api.apiControllers;
-
-
 import api.businessController.TeamBussinessController;
 import api.dtos.TeamDto;
 import api.exceptions.ArgumentNotValidException;
@@ -16,7 +14,6 @@ public class TeamApiController {
         this.validate(teamDto.getName(), "teamDto Name");
         return this.teamBusinessController.create(teamDto);
     }
-
     private void validate(Object property, String message) {
         if (property == null) {
             throw new ArgumentNotValidException(message + " is NULL");
