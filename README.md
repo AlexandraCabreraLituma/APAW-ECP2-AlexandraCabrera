@@ -30,6 +30,7 @@
 - `id`: String (**requerido**)
 - `name`: String (**requerido**)
 - `nick`: String
+- `player`: List<player>
 - `trainerNie`: String (**requerido**)
 
 #### Respuesta
