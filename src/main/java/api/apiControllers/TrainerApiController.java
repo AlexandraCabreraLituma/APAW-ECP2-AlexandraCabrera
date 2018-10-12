@@ -2,7 +2,9 @@ package api.apiControllers;
 
 import api.businessController.TrainerBusinessController;
 import api.dtos.TrainerDto;
+import api.dtos.TrainerNieFirstNameDto;
 import api.exceptions.ArgumentNotValidException;
+import java.util.List;
 
 public class TrainerApiController {
 
@@ -20,5 +22,8 @@ public class TrainerApiController {
         if (property == null) {
             throw new ArgumentNotValidException(message + " is NULL");
         }
+    }
+    public List<TrainerNieFirstNameDto> readAll() {
+        return trainerBusinessController.readAll();
     }
 }

@@ -29,7 +29,8 @@ public class Dispatcher {
                     this.doPost(request, response);
                     break;
                 case GET:
-                    throw new RequestInvalidException(METHOD_ERROR +" " +request.getMethod() + ' ' + request.getPath());
+                    this.doGet(request, response);
+                    break;
                 case PUT:
                     throw new RequestInvalidException(METHOD_ERROR +" " + request.getMethod() + ' ' + request.getPath());
                 case PATCH:
@@ -65,5 +66,11 @@ public class Dispatcher {
             throw new RequestInvalidException(METHOD_ERROR +" " + request.getMethod());
         }
     }
-
+    private void doGet(HttpRequest request, HttpResponse response) {
+        if (request.isEqualsPath(TrainerApiController.TRAINERS)) {
+            response.setBody(this.trainerApiController.readAll());
+        } else {
+            throw new RequestInvalidException(METHOD_ERROR +" "+ request.getMethod() + ' ' + request.getPath());
+        }
+    }
 }
