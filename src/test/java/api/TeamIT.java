@@ -27,7 +27,6 @@ public class TeamIT {
         return (String) new Client().submit(request).getBody();
     }
 
-
     @Test
     void testCreateTeam() {
         this.createTeam();
