@@ -1,5 +1,4 @@
 package api.daos.memory;
-
 import api.daos.DaoFactory;
 import api.daos.TrainerDao;
 import api.daos.PlayerDao;
@@ -17,7 +16,7 @@ public class DaoMemoryFactory extends DaoFactory {
         return trainerDao;
     }
     @Override
-    public PlayerDao PlayerDao() {
+    public PlayerDao getPlayerDao() {
         if (playerDao == null) {
             playerDao = new PlayerDaoMemory();
         }

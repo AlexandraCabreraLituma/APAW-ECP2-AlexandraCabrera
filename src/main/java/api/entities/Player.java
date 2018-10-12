@@ -21,8 +21,6 @@ public class Player {
         this.firstName = firstName;
         this.position = position;
     }
-
-
     public String getNie() {
         return nie;
     }
@@ -55,6 +53,14 @@ public class Player {
         this.number = number;
     }
 
+    public void setNie(String nie) {
+        this.nie = nie;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     @Override
     public String toString() {
         return "Player{" +
@@ -66,11 +72,5 @@ public class Player {
                 '}';
     }
 
-    public void setNie(String nie) {
-        this.nie = nie;
-    }
 
-    public void setPosition(Position position) {
-        this.position = position;
-    }
 }

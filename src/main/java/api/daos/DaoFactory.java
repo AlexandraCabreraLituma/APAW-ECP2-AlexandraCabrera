@@ -14,5 +14,5 @@ public abstract class DaoFactory {
     }
 
     public abstract TrainerDao getTrainerDao();
-    public abstract PlayerDao PlayerDao();
+    public abstract PlayerDao getPlayerDao();
 }

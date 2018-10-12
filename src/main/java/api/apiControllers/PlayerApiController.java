@@ -1,7 +1,6 @@
 package api.apiControllers;
 
 import api.businessController.PlayerBussinessController;
-import api.businessController.TrainerBusinessController;
 import api.dtos.PlayerDto;
 import api.exceptions.ArgumentNotValidException;
 

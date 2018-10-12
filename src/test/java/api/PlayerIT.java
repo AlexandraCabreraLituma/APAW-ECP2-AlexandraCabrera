@@ -1,7 +1,6 @@
 package api;
 
 import api.apiControllers.PlayerApiController;
-import api.apiControllers.TrainerApiController;
 import api.daos.DaoFactory;
 import api.daos.memory.DaoMemoryFactory;
 import api.dtos.PlayerDto;

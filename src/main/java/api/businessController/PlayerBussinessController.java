@@ -10,7 +10,7 @@ public class PlayerBussinessController {
     public String create(PlayerDto playerDto) {
 
         Player player = new Player(playerDto.getNie(), playerDto.getFirstName(),null,0,playerDto.getPosition());
-        DaoFactory.getFactory().PlayerDao().save(player);
+        DaoFactory.getFactory().getPlayerDao().save(player);
         return player.getNie();
     }
 }
