@@ -9,7 +9,6 @@ public class PlayerDto {
     private int number;
     private Position position;
 
-
     public PlayerDto(String nie, String firstName,Position position) {
         this.nie=nie;
         this.firstName=firstName;
