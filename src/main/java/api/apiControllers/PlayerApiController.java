@@ -7,6 +7,9 @@ import api.exceptions.ArgumentNotValidException;
 public class PlayerApiController {
 
     public static final String PLAYERS = "/players";
+
+    public static final String ID_ID = "/{id}";
+
     private PlayerBussinessController playerBusinessController = new PlayerBussinessController();
 
     public String create(PlayerDto playerDto) {

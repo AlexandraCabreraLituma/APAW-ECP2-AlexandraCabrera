@@ -1,7 +1,5 @@
 package api.dtos;
 
-import api.entities.Player;
-import api.entities.Trainer;
 
 import java.util.List;
 
@@ -15,12 +13,6 @@ public class TeamDto {
     public TeamDto(String id, String name, String trainer) {
         this.id = id;
         this.name = name;
-        this.trainer = trainer;
-    }
-    public TeamDto(String id, String name, List<String> players, String trainer) {
-        this.id = id;
-        this.name = name;
-        this.players=players;
         this.trainer = trainer;
     }
 
@@ -52,19 +44,20 @@ public class TeamDto {
         return players;
     }
 
-    public void setPlayers(List<String> players) {
-        this.players = players;
-    }
-
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
     public void setId(String id) {
         this.id = id;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
+
+    public void setPlayers(List<String> players) {
+        this.players = players;
     }
 
     public void setTrainer(String trainer) {

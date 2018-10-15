@@ -2,11 +2,13 @@ package api.businessController;
 
 import api.daos.DaoFactory;
 import api.dtos.TeamDto;
-import api.dtos.TrainerDto;
+import api.entities.Player;
 import api.entities.Team;
 import api.entities.Trainer;
 
 import api.exceptions.NotFoundException;
+
+import java.util.List;
 
 public class TeamBussinessController {
     public String create(TeamDto teamDto) {
@@ -16,4 +18,13 @@ public class TeamBussinessController {
         DaoFactory.getFactory().getTeamDao().save(team);
         return team.getId();
     }
+    public void updatePlayer(String teamId, List<Player> player) {
+        //System.out.println("986451238465328645312465312");
+        Team team = DaoFactory.getFactory().getTeamDao().read(teamId)
+                .orElseThrow(() -> new NotFoundException("Team (" + teamId + ")"));
+        team.setPlayers(player);
+        //System.out.println("hola");
+        DaoFactory.getFactory().getTeamDao().save(team);
+    }
+
 }

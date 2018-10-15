@@ -1,17 +1,25 @@
 package api;
 
+import api.apiControllers.PlayerApiController;
 import api.apiControllers.TeamApiController;
 import api.apiControllers.TrainerApiController;
 import api.daos.DaoFactory;
 import api.daos.memory.DaoMemoryFactory;
+import api.dtos.PlayerDto;
 import api.dtos.TeamDto;
 import api.dtos.TrainerDto;
+import api.entities.Player;
+import api.entities.Position;
+import api.entities.Team;
 import http.Client;
 import http.HttpException;
 import http.HttpRequest;
 import http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -20,11 +28,6 @@ public class TeamIT {
     @BeforeAll
     static void before() {
         DaoFactory.setFactory(new DaoMemoryFactory());
-    }
-
-    private String createTrainer() {
-        HttpRequest request = HttpRequest.builder().path(TrainerApiController.TRAINERS).body(new TrainerDto("1400","Alexandra",null)).post();
-        return (String) new Client().submit(request).getBody();
     }
 
     @Test
@@ -38,6 +41,10 @@ public class TeamIT {
         return (String) new Client().submit(request).getBody();
     }
 
+    private String createTrainer() {
+        HttpRequest request = HttpRequest.builder().path(TrainerApiController.TRAINERS).body(new TrainerDto("1400","Alexandra",null)).post();
+        return (String) new Client().submit(request).getBody();
+    }
     @Test
     void createTeamTrainerNieNotFound() {
         HttpRequest request = HttpRequest.builder().path(TeamApiController.TEAMS)
@@ -60,5 +67,29 @@ public class TeamIT {
         HttpException exception = assertThrows(HttpException.class, () -> new Client().submit(request));
         assertEquals(HttpStatus.BAD_REQUEST, exception.getHttpStatus());
     }
+    @Test
+    void testUpdatePlayers() {
+        String id = this.createTeam();
+       /// System.out.println("creo team");
+        //List player=this.createPlayer();
+        List<String> players = new ArrayList<String>();
+        players.add(this.createPlayer1());
+        players.add(this.createPlayer2());
+        //System.out.println("crea lista de playeres");
+
+        HttpRequest request = HttpRequest.builder().path(TeamApiController.TEAMS).path(PlayerApiController.ID_ID)
+                .expandPath(id).path(TeamApiController.PLAYERS).body(players).patch();
+        new Client().submit(request);
+    }
+
+    private String createPlayer1() {
+        HttpRequest request = HttpRequest.builder().path(PlayerApiController.PLAYERS).body(new PlayerDto("12345","Esteban", Position.GUARD)).post();
+        return (String) new Client().submit(request).getBody();
+    }
+    private String createPlayer2() {
+        HttpRequest request = HttpRequest.builder().path(PlayerApiController.PLAYERS).body(new PlayerDto("6789","Juan", Position.CENTER)).post();
+        return (String) new Client().submit(request).getBody();
+    }
+
 
 }

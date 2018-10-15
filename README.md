@@ -61,7 +61,7 @@
   - [{nie:String,name:String}]
 
 ---
-### PATH /team/{id}/players
+### PATH /teams/{id}/players
 #### Parámetros del cuerpo
 - `players`: <List> (**requerido**)
 #### Respuesta
