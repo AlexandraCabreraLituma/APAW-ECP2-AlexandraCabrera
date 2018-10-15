@@ -16,11 +16,6 @@ public class Player {
         this.position = position;
     }
 
-    public Player(String nie, String firstName, Position position) {
-        this.nie = nie;
-        this.firstName = firstName;
-        this.position = position;
-    }
     public String getNie() {
         return nie;
     }

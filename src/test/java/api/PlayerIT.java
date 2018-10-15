@@ -59,6 +59,20 @@ public class PlayerIT {
         assertEquals(HttpStatus.BAD_REQUEST, exception.getHttpStatus());
     }
 
+    @Test
+    void testUpdatePlayer() {
+        String nie = this.createPlayer();
+        HttpRequest request = HttpRequest.builder().path(PlayerApiController.PLAYERS).path(PlayerApiController.ID_ID)
+                .expandPath(nie).body(new PlayerDto("999","Juan",Position.FOWARD)).put();
+        new Client().submit(request);
+    }
+    @Test
+    void testUpdatePlayerNotFoundException() {
+        HttpRequest request = HttpRequest.builder().path(PlayerApiController.PLAYERS).path(PlayerApiController.ID_ID)
+                .expandPath("56448645132156").body(new PlayerDto("999","Juan",Position.FOWARD)).put();
+        HttpException exception = assertThrows(HttpException.class, () -> new Client().submit(request));
+        assertEquals(HttpStatus.NOT_FOUND, exception.getHttpStatus());
+    }
 
 
 }

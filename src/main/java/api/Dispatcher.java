@@ -35,7 +35,8 @@ public class Dispatcher {
                     this.doGet(request, response);
                     break;
                 case PUT:
-                    throw new RequestInvalidException(METHOD_ERROR +" " + request.getMethod() + ' ' + request.getPath());
+                    this.doPut(request);
+                    break;
                 case PATCH:
                     this.doPatch(request);
                     break;
@@ -84,7 +85,13 @@ public class Dispatcher {
             throw new RequestInvalidException(METHOD_ERROR +" "+ request.getMethod() + ' ' + request.getPath());
         }
     }
-
+    private void doPut(HttpRequest request) {
+        if (request.isEqualsPath(PlayerApiController.PLAYERS + PlayerApiController.ID_ID)) {
+            this.playerApiController.update(request.getPath(1), (PlayerDto) request.getBody());
+        } else {
+            throw new RequestInvalidException(METHOD_ERROR +" "+ request.getMethod() + ' ' + request.getPath());
+        }
+    }
 
 
 }
