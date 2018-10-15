@@ -70,12 +70,9 @@ public class TeamIT {
     @Test
     void testUpdatePlayers() {
         String id = this.createTeam();
-       /// System.out.println("creo team");
-        //List player=this.createPlayer();
         List<String> players = new ArrayList<String>();
         players.add(this.createPlayer1());
         players.add(this.createPlayer2());
-        //System.out.println("crea lista de playeres");
 
         HttpRequest request = HttpRequest.builder().path(TeamApiController.TEAMS).path(PlayerApiController.ID_ID)
                 .expandPath(id).path(TeamApiController.PLAYERS).body(players).patch();

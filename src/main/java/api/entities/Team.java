@@ -29,13 +29,15 @@ public class Team {
         return nick;
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
     public Trainer getTrainer() {
         return trainer;
     }
 
-    public List<Player> getPlayers() {
-        return players;
-    }
+
 
     public void setPlayers(List<Player> players) {
         this.players = players;
