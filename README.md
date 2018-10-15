@@ -71,6 +71,18 @@
 ---
 
 ### PUT /players/{nie}
+#### Parámetros del cuerpo
+- `nie`: String (**requerido**)
+- `firstName`: String (**requerido**)
+- `lastName`: String
+- `number`: Integer
+- `position`: Position (**requerido**)
+#### Respuesta
+- 200 OK
+- 403 BAD_REQUEST
+- 404 NOT_FOUND
+---
+
 ### DELETE /teams/{id}
 ### GET /teams/{id}/average
 
