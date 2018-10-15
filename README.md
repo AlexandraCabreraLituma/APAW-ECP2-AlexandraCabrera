@@ -12,10 +12,55 @@
 ![themes-entities-class-diagram](https://github.com/AlexandraCabreraLituma/APAW-ECP2-AlexandraCabrera/blob/master/AlexandraCabreraUml.png)
 
 ## API
-### POST /trainers
+### POST /users
+#### Parámetros del cuerpo
+- `nie`: String (**requerido**)
+- `firstName`: String (**requerido**)
+- `lastName`: String
+
+#### Respuesta
+- 200 OK
+  - `nie`: String
+- 403 BAD_REQUEST
+
+---
+
 ### POST /teams
+#### Parámetros del cuerpo
+- `id`: String (**requerido**)
+- `name`: String (**requerido**)
+- `nick`: String
+- `player`: List<player>
+- `trainerNie`: String (**requerido**)
+
+#### Respuesta
+- 200 OK
+  - `id`: String
+- 403 BAD_REQUEST
+
+---
+
 ### POST /players
+#### Parámetros del cuerpo
+- `nie`: String (**requerido**)
+- `firstName`: String (**requerido**)
+- `lastName`: String
+- `number`: Integer
+- `position`: Position (**requerido**)
+
+#### Respuesta
+- 200 OK
+  - `nie`: String
+- 403 BAD_REQUEST
+
+---
+
 ### GET /trainers
+#### Respuesta
+- 200 OK
+  - [{nie:String,name:String}]
+
+---
 ### PATH/teams
 ### PUT /players/{nie}
 ### DELETE /teams/{id}
