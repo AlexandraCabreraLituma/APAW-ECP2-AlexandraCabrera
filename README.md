@@ -61,7 +61,15 @@
   - [{nie:String,name:String}]
 
 ---
-### PATH/teams
+### PATH /team/{id}/players
+#### Parámetros del cuerpo
+- `players`: <List> (**requerido**)
+#### Respuesta
+- 200 OK
+- 403 BAD_REQUEST
+- 404 NOT_FOUND
+---
+
 ### PUT /players/{nie}
 ### DELETE /teams/{id}
 ### GET /teams/{id}/average
