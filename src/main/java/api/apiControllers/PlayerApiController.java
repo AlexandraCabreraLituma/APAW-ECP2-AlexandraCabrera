@@ -20,6 +20,13 @@ public class PlayerApiController {
         return this.playerBusinessController.create(playerDto);
     }
 
+    public void update(String nie, PlayerDto playerDto) {
+        this.validate(playerDto.getNie(), "playerDto Nie");
+        this.validate(playerDto.getFirstName(), "playerDto FirstName");
+        this.validate(playerDto.getPosition(), "playerDto Position");
+        this.playerBusinessController.updateNie(nie, playerDto);
+    }
+
     private void validate(Object property, String message) {
         if (property == null) {
             throw new ArgumentNotValidException(message + " is NULL");
