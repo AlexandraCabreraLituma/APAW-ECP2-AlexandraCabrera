@@ -6,12 +6,15 @@ import api.apiControllers.TrainerApiController;
 import api.dtos.PlayerDto;
 import api.dtos.TeamDto;
 import api.dtos.TrainerDto;
+import api.entities.Player;
 import api.exceptions.ArgumentNotValidException;
 import api.exceptions.NotFoundException;
 import api.exceptions.RequestInvalidException;
 import http.HttpRequest;
 import http.HttpResponse;
 import http.HttpStatus;
+
+import java.util.List;
 
 public class Dispatcher {
 
@@ -34,7 +37,8 @@ public class Dispatcher {
                 case PUT:
                     throw new RequestInvalidException(METHOD_ERROR +" " + request.getMethod() + ' ' + request.getPath());
                 case PATCH:
-                    throw new RequestInvalidException(METHOD_ERROR +" "  + request.getMethod() + ' ' + request.getPath());
+                    this.doPatch(request);
+                    break;
                 case DELETE:
                     throw new RequestInvalidException(METHOD_ERROR +" "  + request.getMethod() + ' ' + request.getPath());
                 default:
@@ -73,4 +77,14 @@ public class Dispatcher {
             throw new RequestInvalidException(METHOD_ERROR +" "+ request.getMethod() + ' ' + request.getPath());
         }
     }
+    private void doPatch(HttpRequest request) {
+        if (request.isEqualsPath(TeamApiController.TEAMS + TeamApiController.ID_ID + TeamApiController.PLAYERS)) {
+            this.teamApiController.updatePlayer(request.getPath(1), (List<Player>) request.getBody());
+        } else {
+            throw new RequestInvalidException(METHOD_ERROR +" "+ request.getMethod() + ' ' + request.getPath());
+        }
+    }
+
+
+
 }
