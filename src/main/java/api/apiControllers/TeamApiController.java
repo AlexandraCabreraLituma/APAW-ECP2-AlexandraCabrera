@@ -19,14 +19,18 @@ public class TeamApiController {
         this.validate(teamDto.getName(), "teamDto Name");
         return this.teamBusinessController.create(teamDto);
     }
+
+    public void updatePlayer(String themeId, List<Player> player) {
+        this.validate(player, "player");
+        this.teamBusinessController.updatePlayer(themeId, player);
+    }
+    public void delete(String id) {
+        this.teamBusinessController.delete(id);
+    }
+
     private void validate(Object property, String message) {
         if (property == null) {
             throw new ArgumentNotValidException(message + " is NULL");
         }
     }
-    public void updatePlayer(String themeId, List<Player> player) {
-        this.validate(player, "player");
-        this.teamBusinessController.updatePlayer(themeId, player);
-    }
-
 }

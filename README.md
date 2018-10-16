@@ -83,7 +83,7 @@
 - 404 NOT_FOUND
 ---
 
-### DELETE /teams/{nie}
+### DELETE /teams/{id}
 #### Respuesta
 - 200 OK
 ---

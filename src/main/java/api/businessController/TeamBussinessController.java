@@ -23,5 +23,8 @@ public class TeamBussinessController {
         team.setPlayers(player);
         DaoFactory.getFactory().getTeamDao().save(team);
     }
+    public void delete(String id) {
+        DaoFactory.getFactory().getTeamDao().deleteById(id);
+    }
 
 }
