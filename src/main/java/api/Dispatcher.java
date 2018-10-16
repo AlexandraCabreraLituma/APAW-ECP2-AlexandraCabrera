@@ -100,6 +100,4 @@ public class Dispatcher {
             throw new RequestInvalidException(METHOD_ERROR +" "+ request.getMethod() + ' ' + request.getPath());
         }
     }
-
-
 }

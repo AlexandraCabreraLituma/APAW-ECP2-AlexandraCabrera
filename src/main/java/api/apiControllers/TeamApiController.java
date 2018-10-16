@@ -24,6 +24,7 @@ public class TeamApiController {
         this.validate(player, "player");
         this.teamBusinessController.updatePlayer(themeId, player);
     }
+
     public void delete(String id) {
         this.teamBusinessController.delete(id);
     }

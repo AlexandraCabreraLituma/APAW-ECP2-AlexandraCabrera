@@ -8,34 +8,27 @@ import api.daos.memory.DaoMemoryFactory;
 import api.dtos.PlayerDto;
 import api.dtos.TeamDto;
 import api.dtos.TrainerDto;
-import api.entities.Player;
 import api.entities.Position;
-import api.entities.Team;
 import http.Client;
 import http.HttpException;
 import http.HttpRequest;
 import http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TeamIT {
     @BeforeAll
     static void before() {
         DaoFactory.setFactory(new DaoMemoryFactory());
     }
-
     @Test
     void testCreateTeam() {
         this.createTeam();
     }
-
     private String createTeam() {
         String trainerNie=this.createTrainer();
         HttpRequest request = HttpRequest.builder().path(TeamApiController.TEAMS).body(new TeamDto("01","Golden State",null,null,trainerNie)).post();
@@ -96,6 +89,5 @@ public class TeamIT {
                 .expandPath(id).delete();
         new Client().submit(request);
     }
-
 
 }
