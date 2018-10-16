@@ -41,7 +41,8 @@ public class Dispatcher {
                     this.doPatch(request);
                     break;
                 case DELETE:
-                    throw new RequestInvalidException(METHOD_ERROR +" "  + request.getMethod() + ' ' + request.getPath());
+                    this.doDelete(request);
+                    break;
                 default:
                     throw new RequestInvalidException(METHOD_ERROR +" "  + request.getMethod());
             }
@@ -88,6 +89,13 @@ public class Dispatcher {
     private void doPut(HttpRequest request) {
         if (request.isEqualsPath(PlayerApiController.PLAYERS + PlayerApiController.ID_ID)) {
             this.playerApiController.update(request.getPath(1), (PlayerDto) request.getBody());
+        } else {
+            throw new RequestInvalidException(METHOD_ERROR +" "+ request.getMethod() + ' ' + request.getPath());
+        }
+    }
+    private void doDelete(HttpRequest request) {
+        if (request.isEqualsPath(TeamApiController.TEAMS + TeamApiController.ID_ID)) {
+            this.teamApiController.delete(request.getPath(1));
         } else {
             throw new RequestInvalidException(METHOD_ERROR +" "+ request.getMethod() + ' ' + request.getPath());
         }

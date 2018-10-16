@@ -20,7 +20,7 @@ public class Team {
     public String getId() {
         return id;
     }
-
+/*
     public String getName() {
         return name;
     }
@@ -28,7 +28,7 @@ public class Team {
     public String getNick() {
         return nick;
     }
-
+*/
     public List<Player> getPlayers() {
         return players;
     }
@@ -37,8 +37,6 @@ public class Team {
         return trainer;
     }
 
-
-
     public void setPlayers(List<Player> players) {
         this.players = players;
     }
@@ -46,7 +44,7 @@ public class Team {
     public void setId(String id) {
         this.id = id;
     }
-
+/*
     public void setName(String name) {
         this.name = name;
     }
@@ -57,7 +55,7 @@ public class Team {
 
     public void setTrainer(Trainer trainer) {
         this.trainer = trainer;
-    }
+    }*/
 
     @Override
     public String toString() {

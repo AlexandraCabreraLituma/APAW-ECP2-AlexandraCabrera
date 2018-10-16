@@ -84,6 +84,9 @@
 ---
 
 ### DELETE /teams/{id}
+#### Respuesta
+- 200 OK
+---
 ### GET /teams/{id}/average
 
 ##### Autor: Alexandra Cabrera

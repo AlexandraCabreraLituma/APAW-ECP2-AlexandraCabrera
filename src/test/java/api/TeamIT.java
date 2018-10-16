@@ -23,6 +23,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TeamIT {
     @BeforeAll
@@ -86,6 +87,14 @@ public class TeamIT {
     private String createPlayer2() {
         HttpRequest request = HttpRequest.builder().path(PlayerApiController.PLAYERS).body(new PlayerDto("6789","Juan", Position.CENTER)).post();
         return (String) new Client().submit(request).getBody();
+    }
+
+    @Test
+    void testDelete() {
+        String id = this.createTeam();
+         HttpRequest request = HttpRequest.builder().path(TeamApiController.TEAMS).path(TeamApiController.ID_ID)
+                .expandPath(id).delete();
+        new Client().submit(request);
     }
 
 
