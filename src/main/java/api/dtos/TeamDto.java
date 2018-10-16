@@ -46,23 +46,17 @@ public class TeamDto {
     public void setId(String id) {
         this.id = id;
     }
-/*
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
+    public void setNick(String nick) {this.nick = nick;}
 
-    public void setPlayers(List<String> players) {
-        this.players = players;
-    }
+    public void setPlayers(List<String> players) {this.players = players;}
 
-    public void setTrainer(String trainer) {
-        this.trainer = trainer;
-    }
-*/
+    public void setTrainer(String trainer) {this.trainer = trainer;}
+
     @Override
     public String toString() {
         return "Team{" +
