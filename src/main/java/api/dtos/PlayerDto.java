@@ -9,10 +9,10 @@ public class PlayerDto {
     private int number;
     private Position position;
 
-    public PlayerDto(String nie, String firstName,Position position) {
-        this.nie=nie;
-        this.firstName=firstName;
-        this.position=position;
+    public PlayerDto(String nie, String firstName, Position position) {
+        this.nie = nie;
+        this.firstName = firstName;
+        this.position = position;
     }
 
     public String getNie() {
@@ -39,6 +39,16 @@ public class PlayerDto {
         this.nie = nie;
     }
 
+    public void setNumber(int number) {
+
+        this.number = number;
+    }
+
+    public void setPosition(Position position)
+    {
+        this.position = position;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -47,13 +57,7 @@ public class PlayerDto {
         this.lastName = lastName;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
 
-    public void setPosition(Position position) {
-        this.position = position;
-    }
 
     @Override
     public String toString() {
