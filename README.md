@@ -87,7 +87,11 @@
 #### Respuesta
 - 200 OK
 ---
-### GET /teams/{id}/average
-
+### GET /teams/search?q=average:>=5
+#### Respuesta
+- 200 OK
+  - `[ {id:String,name:String} ]`
+- 403 BAD_REQUEST
+---
 ##### Autor: Alexandra Cabrera
 
