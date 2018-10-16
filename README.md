@@ -83,7 +83,10 @@
 - 404 NOT_FOUND
 ---
 
-### DELETE /teams/{id}
+### DELETE /teams/{nie}
+#### Respuesta
+- 200 OK
+---
 ### GET /teams/{id}/average
 
 ##### Autor: Alexandra Cabrera
