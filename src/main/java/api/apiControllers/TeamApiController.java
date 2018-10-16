@@ -14,7 +14,6 @@ public class TeamApiController {
     public static final String PLAYERS = "/players";
     public static final String SEARCH = "/search";
 
-
     private TeamBussinessController teamBusinessController = new TeamBussinessController();
 
     public String create(TeamDto teamDto) {
@@ -32,18 +31,17 @@ public class TeamApiController {
     public void delete(String id) {
         this.teamBusinessController.delete(id);
     }
-
-    private void validate(Object property, String message) {
-        if (property == null) {
-            throw new ArgumentNotValidException(message + " is NULL");
-        }
-    }
     public List<TeamIdNameDto> find(String query) {
         this.validate(query, "query param q");
         if (!"average".equals(query.split(":>=")[0])) {
             throw new ArgumentNotValidException("query param q is incorrect, missing 'average:>='");
         }
         return this.teamBusinessController.findByAverageGreaterThanEqual(Integer.valueOf(query.split(":>=")[1]));
+    }
+    private void validate(Object property, String message) {
+        if (property == null) {
+            throw new ArgumentNotValidException(message + " is NULL");
+        }
     }
 
 

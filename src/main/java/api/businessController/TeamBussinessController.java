@@ -7,7 +7,6 @@ import api.entities.Player;
 import api.entities.Team;
 import api.entities.Trainer;
 import api.exceptions.NotFoundException;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
