@@ -1,6 +1,7 @@
 package api.apiControllers;
 import api.businessController.TeamBussinessController;
 import api.dtos.TeamDto;
+import api.dtos.TeamIdNameDto;
 import api.exceptions.ArgumentNotValidException;
 import api.entities.Player;
 
@@ -11,6 +12,9 @@ public class TeamApiController {
     public static final String TEAMS = "/teams";
     public static final String ID_ID = "/{id}";
     public static final String PLAYERS = "/players";
+    public static final String SEARCH = "/search";
+
+
     private TeamBussinessController teamBusinessController = new TeamBussinessController();
 
     public String create(TeamDto teamDto) {
@@ -34,4 +38,13 @@ public class TeamApiController {
             throw new ArgumentNotValidException(message + " is NULL");
         }
     }
+    public List<TeamIdNameDto> find(String query) {
+        this.validate(query, "query param q");
+        if (!"average".equals(query.split(":>=")[0])) {
+            throw new ArgumentNotValidException("query param q is incorrect, missing 'average:>='");
+        }
+        return this.teamBusinessController.findByAverageGreaterThanEqual(Integer.valueOf(query.split(":>=")[1]));
+    }
+
+
 }

@@ -7,6 +7,7 @@ import api.daos.DaoFactory;
 import api.daos.memory.DaoMemoryFactory;
 import api.dtos.PlayerDto;
 import api.dtos.TeamDto;
+import api.dtos.TeamIdNameDto;
 import api.dtos.TrainerDto;
 import api.entities.Position;
 import http.Client;
@@ -17,8 +18,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class TeamIT {
     @BeforeAll
@@ -88,4 +90,45 @@ public class TeamIT {
         new Client().submit(request);
     }
 
+
+    @Test
+    void testSearchAverage() {
+        this.createTeamwithPlayer();
+        HttpRequest request = HttpRequest.builder().path(TeamApiController.TEAMS).path(TeamApiController.SEARCH)
+                .param("q", "average:>=5").get();
+        List<TeamIdNameDto> team = (List<TeamIdNameDto>) new Client().submit(request).getBody();
+        assertFalse(team.isEmpty());
+    }
+
+    @Test
+    void testSearchAverageWithoutParamQ() {
+        this.createTeamwithPlayer();
+        HttpRequest request = HttpRequest.builder().path(TeamApiController.TEAMS).path(TeamApiController.SEARCH)
+                .param("error", "average:>=5").get();
+        HttpException exception = assertThrows(HttpException.class, () -> new Client().submit(request));
+        assertEquals(HttpStatus.BAD_REQUEST, exception.getHttpStatus());
+    }
+    @Test
+    void testSearchAverageParamError() {
+        this.createTeamwithPlayer();
+        HttpRequest request = HttpRequest.builder().path(TeamApiController.TEAMS).path(TeamApiController.SEARCH)
+                .param("error", "error:>=5").get();
+        HttpException exception = assertThrows(HttpException.class, () -> new Client().submit(request));
+        assertEquals(HttpStatus.BAD_REQUEST, exception.getHttpStatus());
+    }
+
+    private String createTeamwithPlayer() {
+
+        String id = this.createTeam();
+        List<String> players = new ArrayList<String>();
+
+        for (int i = 0; i < 10; i++) {
+            players.add(this.createPlayer("playerNie" + i, "playerFirstName" + 1, Position.FOWARD));
+        }
+
+        HttpRequest request = HttpRequest.builder().path(TeamApiController.TEAMS).path(PlayerApiController.ID_ID)
+                .expandPath(id).path(TeamApiController.PLAYERS).body(players).patch();
+
+        return (String) new Client().submit(request).getBody();
+    }
 }
