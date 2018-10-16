@@ -3,6 +3,8 @@ package api.daos.memory;
 import api.daos.TeamDao;
 import api.entities.Team;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TeamDaoMemory extends GenericDaoMemory<Team> implements TeamDao {
 
@@ -19,5 +21,11 @@ public class TeamDaoMemory extends GenericDaoMemory<Team> implements TeamDao {
     public void setId(Team team, String id) {
         team.setId(id);
 
+    }
+    @Override
+    public List<Team> findByPlayersNotEmpty() {
+        return this.findAll().stream()
+                .filter(team -> !team.getPlayers().isEmpty())
+                .collect(Collectors.toList());
     }
 }

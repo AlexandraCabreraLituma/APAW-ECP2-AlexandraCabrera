@@ -75,7 +75,11 @@ public class Dispatcher {
     private void doGet(HttpRequest request, HttpResponse response) {
         if (request.isEqualsPath(TrainerApiController.TRAINERS)) {
             response.setBody(this.trainerApiController.readAll());
-        } else {
+        }
+        else if (request.isEqualsPath(TeamApiController.TEAMS  + TeamApiController.SEARCH)) {
+            response.setBody(this.teamApiController.find(request.getParams().get("q")));
+        }
+        else {
             throw new RequestInvalidException(METHOD_ERROR +" "+ request.getMethod() + ' ' + request.getPath());
         }
     }

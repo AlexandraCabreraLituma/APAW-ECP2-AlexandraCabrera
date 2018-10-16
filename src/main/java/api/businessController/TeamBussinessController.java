@@ -2,12 +2,14 @@ package api.businessController;
 
 import api.daos.DaoFactory;
 import api.dtos.TeamDto;
+import api.dtos.TeamIdNameDto;
 import api.entities.Player;
 import api.entities.Team;
 import api.entities.Trainer;
 import api.exceptions.NotFoundException;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TeamBussinessController {
     public String create(TeamDto teamDto) {
@@ -27,4 +29,15 @@ public class TeamBussinessController {
         DaoFactory.getFactory().getTeamDao().deleteById(id);
     }
 
+    public List<TeamIdNameDto> findByAverageGreaterThanEqual(Integer value) {
+        return DaoFactory.getFactory().getTeamDao().findByPlayersNotEmpty().stream()
+                .filter(theme -> this.counter(theme) >= value)
+                .map(TeamIdNameDto::new)
+                .collect(Collectors.toList());
+    }
+
+    private Integer counter(Team team) {
+        return team.getPlayers().toArray().length;
+
+    }
 }
