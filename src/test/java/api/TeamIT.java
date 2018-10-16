@@ -65,20 +65,18 @@ public class TeamIT {
     void testUpdatePlayers() {
         String id = this.createTeam();
         List<String> players = new ArrayList<String>();
-        players.add(this.createPlayer1());
-        players.add(this.createPlayer2());
+
+        for (int i = 0; i < 10; i++) {
+            players.add(this.createPlayer("playerNie"+i,"playerFirstName"+1,Position.FOWARD));
+        }
 
         HttpRequest request = HttpRequest.builder().path(TeamApiController.TEAMS).path(PlayerApiController.ID_ID)
                 .expandPath(id).path(TeamApiController.PLAYERS).body(players).patch();
         new Client().submit(request);
     }
 
-    private String createPlayer1() {
-        HttpRequest request = HttpRequest.builder().path(PlayerApiController.PLAYERS).body(new PlayerDto("12345","Esteban", Position.GUARD)).post();
-        return (String) new Client().submit(request).getBody();
-    }
-    private String createPlayer2() {
-        HttpRequest request = HttpRequest.builder().path(PlayerApiController.PLAYERS).body(new PlayerDto("6789","Juan", Position.CENTER)).post();
+    private String createPlayer(String nie, String firtsName, Position position) {
+        HttpRequest request = HttpRequest.builder().path(PlayerApiController.PLAYERS).body(new PlayerDto(nie,firtsName, position)).post();
         return (String) new Client().submit(request).getBody();
     }
 
