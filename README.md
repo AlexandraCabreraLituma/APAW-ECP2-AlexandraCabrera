@@ -61,10 +61,37 @@
   - [{nie:String,name:String}]
 
 ---
-### PATH/teams
-### PUT /players/{nie}
-### DELETE /teams/{id}
-### GET /teams/{id}/average
+### PATH /teams/{id}/players
+#### Parámetros del cuerpo
+- `players`: <List> (**requerido**)
+#### Respuesta
+- 200 OK
+- 403 BAD_REQUEST
+- 404 NOT_FOUND
+---
 
+### PUT /players/{nie}
+#### Parámetros del cuerpo
+- `nie`: String (**requerido**)
+- `firstName`: String (**requerido**)
+- `lastName`: String
+- `number`: Integer
+- `position`: Position (**requerido**)
+#### Respuesta
+- 200 OK
+- 403 BAD_REQUEST
+- 404 NOT_FOUND
+---
+
+### DELETE /teams/{id}
+#### Respuesta
+- 200 OK
+---
+### GET /teams/search?q=average:>=5
+#### Respuesta
+- 200 OK
+  - `[ {id:String,name:String} ]`
+- 403 BAD_REQUEST
+---
 ##### Autor: Alexandra Cabrera
 

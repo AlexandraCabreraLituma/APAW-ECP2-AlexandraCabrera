@@ -6,12 +6,15 @@ import api.apiControllers.TrainerApiController;
 import api.dtos.PlayerDto;
 import api.dtos.TeamDto;
 import api.dtos.TrainerDto;
+import api.entities.Player;
 import api.exceptions.ArgumentNotValidException;
 import api.exceptions.NotFoundException;
 import api.exceptions.RequestInvalidException;
 import http.HttpRequest;
 import http.HttpResponse;
 import http.HttpStatus;
+
+import java.util.List;
 
 public class Dispatcher {
 
@@ -32,11 +35,14 @@ public class Dispatcher {
                     this.doGet(request, response);
                     break;
                 case PUT:
-                    throw new RequestInvalidException(METHOD_ERROR +" " + request.getMethod() + ' ' + request.getPath());
+                    this.doPut(request);
+                    break;
                 case PATCH:
-                    throw new RequestInvalidException(METHOD_ERROR +" "  + request.getMethod() + ' ' + request.getPath());
+                    this.doPatch(request);
+                    break;
                 case DELETE:
-                    throw new RequestInvalidException(METHOD_ERROR +" "  + request.getMethod() + ' ' + request.getPath());
+                    this.doDelete(request);
+                    break;
                 default:
                     throw new RequestInvalidException(METHOD_ERROR +" "  + request.getMethod());
             }
@@ -69,6 +75,31 @@ public class Dispatcher {
     private void doGet(HttpRequest request, HttpResponse response) {
         if (request.isEqualsPath(TrainerApiController.TRAINERS)) {
             response.setBody(this.trainerApiController.readAll());
+        }
+        else if (request.isEqualsPath(TeamApiController.TEAMS  + TeamApiController.SEARCH)) {
+            response.setBody(this.teamApiController.find(request.getParams().get("q")));
+        }
+        else {
+            throw new RequestInvalidException(METHOD_ERROR +" "+ request.getMethod() + ' ' + request.getPath());
+        }
+    }
+    private void doPatch(HttpRequest request) {
+        if (request.isEqualsPath(TeamApiController.TEAMS + TeamApiController.ID_ID + TeamApiController.PLAYERS)) {
+            this.teamApiController.updatePlayer(request.getPath(1), (List<Player>) request.getBody());
+        } else {
+            throw new RequestInvalidException(METHOD_ERROR +" "+ request.getMethod() + ' ' + request.getPath());
+        }
+    }
+    private void doPut(HttpRequest request) {
+        if (request.isEqualsPath(PlayerApiController.PLAYERS + PlayerApiController.ID_ID)) {
+            this.playerApiController.update(request.getPath(1), (PlayerDto) request.getBody());
+        } else {
+            throw new RequestInvalidException(METHOD_ERROR +" "+ request.getMethod() + ' ' + request.getPath());
+        }
+    }
+    private void doDelete(HttpRequest request) {
+        if (request.isEqualsPath(TeamApiController.TEAMS + TeamApiController.ID_ID)) {
+            this.teamApiController.delete(request.getPath(1));
         } else {
             throw new RequestInvalidException(METHOD_ERROR +" "+ request.getMethod() + ' ' + request.getPath());
         }

@@ -9,18 +9,6 @@ public class Team {
     private Trainer trainer;
     private List<Player> players;
 
-    public Team(String id, String name, Trainer trainer) {
-        this.id = id;
-        this.name = name;
-        this.trainer = trainer;
-    }
-    public Team(String id, String name, List<Player> players, Trainer trainer) {
-        this.id = id;
-        this.name = name;
-        this.players=players;
-        this.trainer = trainer;
-    }
-
     public Team(String id, String name, String nick, List<Player> players,Trainer trainer) {
         this.id = id;
         this.name = name;
@@ -32,42 +20,20 @@ public class Team {
     public String getId() {
         return id;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getNick() {
-        return nick;
-    }
-
-    public Trainer getTrainer() {
-        return trainer;
-    }
+    public String getName() {return name;}
+    public String getNick() {return nick;}
 
     public List<Player> getPlayers() {
         return players;
     }
+    public Trainer getTrainer() {return trainer;}
 
-    public void setPlayers(List<Player> players) {
-        this.players = players;
-    }
+    public void setPlayers(List<Player> players) {this.players = players;}
 
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setTrainer(Trainer trainer) {
-        this.trainer = trainer;
-    }
-
+    public void setId(String id) {this.id = id;}
+    public void setName(String name) {this.name = name;}
+    public void setNick(String nick) {this.nick = nick;}
+    public void setTrainer(Trainer trainer) {this.trainer = trainer;}
     @Override
     public String toString() {
         return "Team{" +
@@ -78,6 +44,5 @@ public class Team {
                 ", players=" + players +
                 '}';
     }
-
 
 }

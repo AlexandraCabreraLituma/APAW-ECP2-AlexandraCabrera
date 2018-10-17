@@ -16,14 +16,10 @@ public class Player {
         this.position = position;
     }
 
-    public Player(String nie, String firstName, Position position) {
-        this.nie = nie;
-        this.firstName = firstName;
-        this.position = position;
-    }
     public String getNie() {
         return nie;
     }
+
 
     public String getFirstName() {
         return firstName;
@@ -42,8 +38,10 @@ public class Player {
     }
 
     public void setFirstName(String firstName) {
+
         this.firstName = firstName;
     }
+
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -53,11 +51,13 @@ public class Player {
         this.number = number;
     }
 
+
     public void setNie(String nie) {
         this.nie = nie;
     }
 
     public void setPosition(Position position) {
+
         this.position = position;
     }
 
